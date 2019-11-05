@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package api;
+
+service NgFaaS {
+  rpc GetFucks(FuckNumber) returns (FuckBox) {}
+}
+
+message FuckNumber {
+  int64 number = 1;
+}
+
+message FuckBox {
+  repeated string contents = 1;
+}

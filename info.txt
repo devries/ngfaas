@@ -1,0 +1,9 @@
+go mod init github.com/devries/ngfaas
+
+protoc api/ngfucks.proto -I api/ --go_out=plugins=grpc:api
+
+go get -u google.golang.org/grpc
+
+go build -o ngfaas_server server/main.go
+
+go build -o ngfaas_client client/main.go

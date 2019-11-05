@@ -2,3 +2,5 @@
 .DS_Store
 .cache
 .env
+ngfaas_client
+ngfaas_server
