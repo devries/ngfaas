@@ -7,3 +7,17 @@ go get -u google.golang.org/grpc
 go build -o ngfaas_server server/main.go
 
 go build -o ngfaas_client client/main.go
+
+# Python side
+
+python -m venv venv
+
+pip install grpcio
+pip install grpcio-tools
+
+mkdir python_client
+cd python_client
+
+python -m grpc_tools.protoc -I ../api --python_out=. --grpc_python_out=. ../api/ngfucks.proto
+
+

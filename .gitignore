@@ -5,3 +5,7 @@
 api/ngfucks.pb.go
 ngfaas_client
 ngfaas_server
+venv/
+__pycache__
+python_client/ngfucks_pb2.py
+python_client/ngfucks_pb2_grpc.py
