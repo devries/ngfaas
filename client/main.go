@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"log"
+	"strings"
 	"time"
 
 	"github.com/devries/ngfaas/api"
@@ -34,5 +35,5 @@ func main() {
 		log.Fatalf("could not get fucks: %v", err)
 	}
 
-	log.Printf("Fucks: %v", r.Contents)
+	log.Printf("Fucks: %s", strings.Join(r.Contents, ", "))
 }
