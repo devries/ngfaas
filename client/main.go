@@ -9,10 +9,14 @@ import (
 
 	"github.com/devries/ngfaas/api"
 	"google.golang.org/grpc"
+
+	"crypto/x509"
+	"google.golang.org/grpc/credentials"
 )
 
 const (
-	address = "localhost:50051"
+	address = "ngfaas-j6z4gxi7tq-uc.a.run.app:443"
+	// address = "localhost:50051"
 )
 
 func main() {
@@ -20,7 +24,12 @@ func main() {
 
 	flag.Parse()
 
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
+	pool, err := x509.SystemCertPool()
+	if err != nil {
+		log.Fatalf("unable to load certificate pool: %v", err)
+	}
+	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(pool, "")))
+	// conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

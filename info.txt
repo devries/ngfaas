@@ -20,4 +20,14 @@ cd python_client
 
 python -m grpc_tools.protoc -I ../api --python_out=. --grpc_python_out=. ../api/ngfucks.proto
 
+docker build -t gcr.io/single-arcanum-633/ngfaas:latest .
+
+docker run -d -p 50051:50051 --name srv gcr.io/single-arcanum-633/ngfaas:latest
+
+docker push gcr.io/single-arcanum-633/ngfaas:latest
+
+gcloud beta run deploy ngfaas --image gcr.io/single-arcanum-633/ngfaas:latest --platform managed --region us-central1
+
+
+
 
