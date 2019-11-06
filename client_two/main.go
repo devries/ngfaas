@@ -25,11 +25,11 @@ func main() {
 
 	pool, err := x509.SystemCertPool()
 	if err != nil {
-		log.Fatalf("unable to load certificate pool: %v", err)
+		log.Fatalf("unable to load certificate pool: %s", err)
 	}
 	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(pool, "")))
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		log.Fatalf("did not connect: %s", err)
 	}
 	defer conn.Close()
 
@@ -39,7 +39,7 @@ func main() {
 
 	r, err := c.GetFucks(ctx, &api.FuckNumber{Number: *nf})
 	if err != nil {
-		log.Fatalf("could not get fucks: %v", err)
+		log.Fatalf("could not get fucks: %s", err)
 	}
 
 	log.Printf("Fucks: %s", strings.Join(r.Contents, ", "))
