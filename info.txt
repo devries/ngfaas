@@ -28,6 +28,9 @@ docker push gcr.io/single-arcanum-633/ngfaas:latest
 
 gcloud beta run deploy ngfaas --image gcr.io/single-arcanum-633/ngfaas:latest --platform managed --region us-central1
 
+minica -domains localhost
+minica -ip-addresses 127.0.0.1
+
 
 
 
