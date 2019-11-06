@@ -2,17 +2,12 @@ package main
 
 import (
 	"context"
-	"io/ioutil"
 	"log"
 	"net"
 	"os"
 
-	"crypto/tls"
-	"crypto/x509"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/peer"
 	"google.golang.org/grpc/status"
 
@@ -26,35 +21,13 @@ func main() {
 		port = "50051"
 	}
 
-	certificate, err := tls.LoadX509KeyPair("localhost/cert.pem", "localhost/key.pem")
-	if err != nil {
-		log.Fatalf("could not load server key pair: %s", err)
-	}
-
-	certPool := x509.NewCertPool()
-	bs, err := ioutil.ReadFile("minica.pem")
-	if err != nil {
-		log.Fatalf("failed to read ca certificate: %s", err)
-	}
-
-	ok := certPool.AppendCertsFromPEM(bs)
-	if !ok {
-		log.Fatal("failed to append ca certificate to certificate pool")
-	}
-
 	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	log.Printf("Listening on port %s", port)
 
-	tlsConfig := &tls.Config{
-		ClientAuth:   tls.VerifyClientCertIfGiven, // tls.RequireAndVerifyClientCert,
-		Certificates: []tls.Certificate{certificate},
-		ClientCAs:    certPool,
-	}
-
-	s := grpc.NewServer(grpc.Creds(credentials.NewTLS(tlsConfig)))
+	s := grpc.NewServer()
 	api.RegisterNgFaaSServer(s, &server{})
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %s", err)

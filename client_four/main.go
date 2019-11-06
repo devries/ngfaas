@@ -17,7 +17,6 @@ import (
 )
 
 const (
-	// address = "ngfaas-j6z4gxi7tq-uc.a.run.app:443"
 	address = "localhost:50051"
 )
 
@@ -49,7 +48,6 @@ func main() {
 	})
 
 	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(transportCreds))
-	// conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

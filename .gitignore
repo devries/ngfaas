@@ -7,5 +7,9 @@ ngfaas_client
 ngfaas_server
 venv/
 __pycache__
-python_client/ngfucks_pb2.py
-python_client/ngfucks_pb2_grpc.py
+python_client*/ngfucks_pb2.py
+python_client*/ngfucks_pb2_grpc.py
+minica.pem
+minica-key.pem
+localhost/
+127.0.0.1/
