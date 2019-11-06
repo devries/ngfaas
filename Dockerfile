@@ -2,7 +2,7 @@ FROM golang:1.13 as golang
 ADD . /src/
 RUN set -x && \
   cd /src && \
-  CGO_ENABLED=0 GOOS=linux go build -o ngfaas_server server/main.go
+  CGO_ENABLED=0 GOOS=linux go build -o ngfaas_server server_one/main.go
 
 FROM alpine:3.10
 RUN apk add --no-cache ca-certificates
