@@ -61,7 +61,7 @@ type TokenAccess struct {
 
 func (t TokenAccess) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
 	return map[string]string{
-		"authorization": t.Token,
+		"authorization": "Bearer " + t.Token,
 	}, nil
 }
 

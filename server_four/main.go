@@ -75,8 +75,14 @@ func (s *server) GetFucks(ctx context.Context, in *api.FuckNumber) (*api.FuckBox
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
 		log.Printf("Received no metadata")
+		return nil, status.Errorf(codes.Unauthenticated, "Unable to access metadata")
 	} else {
-		log.Printf("Received authorization token: %v", md.Get("authorization"))
+		tokens := md.Get("authorization")
+		if len(tokens) < 1 || tokens[0] != "Bearer HelloWorld" {
+			log.Printf("Invalid or Missing token")
+			return nil, status.Errorf(codes.Unauthenticated, "Invalid or missing authorization token")
+		}
+		log.Printf("Received valid authorization token")
 	}
 
 	if in.Number < 0 {
