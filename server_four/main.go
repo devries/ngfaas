@@ -72,6 +72,9 @@ func (s *server) GetFucks(ctx context.Context, in *api.FuckNumber) (*api.FuckBox
 		log.Printf("Received Request")
 	}
 
+	// In this case we will read the token directly from the context, but it makes sense
+	// to use an Interceptor to validate the token and potentially add role information
+	// to the context for use by the service functions.
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
 		log.Printf("Received no metadata")
