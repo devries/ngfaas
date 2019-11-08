@@ -122,12 +122,35 @@ The Go client can be built with the command:
 $ go build -o ngfaas_client client_one/main.go
 ```
 
-And the python client can be run from the root of the repository with the
-command:
+## Running the Server and Clients
+
+From the root directory, run the client using the command
 
 ```sh
-$ python python_client_one/client.py
+$ ./ngfaas_server
 ```
+
+Then in another window or shell you can run the clients. The clients take one
+optional argument `-n` followed by a number of fucks to get. By default they
+will request 5 fucks. 
+
+To request 20 fucks with the Go client run
+
+```sh
+$ ./ngfaas_client -n 20
+```
+
+from the root directory of the repository.
+
+To use the python client to request 80 fucks, from the root of the repository
+run  the command:
+
+```sh
+$ python python_client_one/client.py -n 80
+```
+
+You can try very large or negative numbers too in order to see what an error
+response looks like.
 
 ## Running TLS Clients with Cloud Run
 
