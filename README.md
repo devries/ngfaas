@@ -34,32 +34,32 @@ I write the server in Go and have examples of clients written in both python
 and Go. I have a total of five samples. They are:
 
 - Clients and server with no encryption or authentication
-    - [python client](python_client_one/client.py)
-    - [Go client](client_one/main.go)
-    - [Go server](server_one/main.go)
+    - [python client](python_client_one/client.py) (python_client_one)
+    - [Go client](client_one/main.go) (client_one)
+    - [Go server](server_one/main.go) (server_one)
 
 - Clients with TLS, and a server behind a Cloud Run proxy
-    - [python client](python_client_two/client.py)
-    - [Go client](client_two/main.go)
-    - [Go server](server_one/main.go) - Note this is unchanged from the
+    - [python client](python_client_two/client.py) (python_client_two)
+    - [Go client](client_two/main.go) (client_two)
+    - [Go server](server_one/main.go) (server_one) - Note this is unchanged from the
       previous sample.
 
 - Clients and server use TLS with a private CA
-    - [python client](python_client_three/client.py)
-    - [Go client](client_three/main.go)
-    - [Go server](server_two/main.go)
+    - [python client](python_client_three/client.py) (python_client_three)
+    - [Go client](client_three/main.go) (client_three)
+    - [Go server](server_two/main.go) (server_two)
 
 - Client and server use TLS with a private CA, and clients authenticate with a
   certificate during TLS negotiation
-    - [python client](python_client_four/client.py)
-    - [Go client](client_four/main.go)
-    - [Go server](server_three/main.go)
+    - [python client](python_client_four/client.py) (python_client_four)
+    - [Go client](client_four/main.go) (client_four)
+    - [Go server](server_three/main.go) (server_three)
 
 - Client and server use TLS with a private CA, and clients authenticate with a
   token.
-    - [python client](python_client_five/client.py)
-    - [Go client](client_five/main.go)
-    - [Go server](server_four/main.go)
+    - [python client](python_client_five/client.py) (python_client_five)
+    - [Go client](client_five/main.go) (client_five)
+    - [Go server](server_four/main.go) (server_four)
 
 ## Compiling the code
 
