@@ -20,8 +20,7 @@ def main():
     parser.add_argument('-n', dest='number', default=5, type=int)
     args = parser.parse_args()
 
-    with open('/usr/local/etc/openssl/cert.pem','rb') as f:
-        creds = grpc.ssl_channel_credentials(f.read())
+    creds = grpc.ssl_channel_credentials()
 
     with grpc.secure_channel(address, creds) as channel:
         try:
