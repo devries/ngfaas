@@ -205,11 +205,10 @@ response looks like.
 ## Running TLS Clients with Cloud Run
 
 I have put up a server at `ngfaas.unnecessary.tech:443` running on Cloud Run.
-The clients are automatically set up to query that server. Note that the Go
-client uses the correct system certificates, but the python client is
-programmed to look for certificates in `/usr/local/etc/openssl/cert.pem` which
-is only available on Linux or if you have installed OpenSSL using
-[homebrew](https://brew.sh/) on the Mac. 
+The clients are automatically set up to query that server. Hopefully the
+clients will find and load the appropriate client root certificates for your
+system, which should include the Let's Encrypt root certificate. If you
+experience any issues, the system certificates may not have loaded correctly.
 
 ## Private Certificate Authority
 
